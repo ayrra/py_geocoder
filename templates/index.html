@@ -14,18 +14,21 @@
             <div class="container">
                 <div class="text-center">
                     <h1>CSV Geocoding Application</h1>
+                        {% include geo_html ignore missing %}
+                        {% include btn ignore missing %}    
                     <p>Please upload your CSV file. File must contain a column named address or Address.</p>
-                    <form action="{{url_for('success')}}" method="POST" enctype="multipart/form-data">
+                        <p style="color:red;">{{error_msg | safe}}</p>
+                    <form action="{{url_for('results')}}" method="POST" enctype="multipart/form-data">
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" name="file" id="file_input">
+                                <input type="file" name="file" id="file_input" required>
                                 <label class="custom-file-label" for="file_input">Choose File</label>
                             </div>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-success" type="submit">Upload</button>
                             </div>
                         </div>   
-                    </form>           
+                    </form>  
                 </div>
             </div>
         </div>
